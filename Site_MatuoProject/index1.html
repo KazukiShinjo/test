@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>I have</title>
+    <meta name="description" content="テキストテキストテキストテキストテキストテキストテキストテキス">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../Image/logo.ico">
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
+    <link rel="stylesheet" href="./index1.scss">
+  </head>
+</html>
+
+<body>
+  <div class="content">
+    <div class="paralax">
+      <div class="layer rocks2">1</div>
+      <div class="layer rocks1">1</div>
+      <div class="layer hills">2</div>
+      <div class="layer foreground">3</div>
+      <div class="layer rocks2">1</div>
+      <div class="layer rocks1">1</div>
+      <div class="layer hills">2</div>
+      <div class="layer foreground">3</div>
+      <div class="layer rocks2">1</div>
+      <div class="layer rocks1">1</div>
+      <div class="layer hills">2</div>
+      <div class="layer foreground">3</div>
+      <div class="layer rocks2">1</div>
+      <div class="layer rocks1">1</div>
+      <div class="layer hills">2</div>
+      <div class="layer foreground">3</div>
+      <div class="layer rocks2">1</div>
+      <div class="layer rocks1">1</div>
+      <div class="layer hills">2</div>
+      <div class="layer foreground">3</div>
+      <div class="layer rocks2">1</div>
+      <div class="layer rocks1">1</div>
+      <div class="layer hills">2</div>
+      <div class="layer foreground">3</div>
+      <div class="layer rocks2">1</div>
+      <div class="layer rocks1">1</div>
+      <div class="layer hills">2</div>
+      <div class="layer foreground">3</div>
+      <div class="layer rocks2">1</div>
+      <div class="layer rocks1">1</div>
+      <div class="layer hills">2</div>
+      <div class="layer foreground">3</div>
+      <div class="layer rocks2">1</div>
+      <div class="layer rocks1">1</div>
+      <div class="layer hills">2</div>
+      <div class="layer foreground">3</div>
+      <div class="layer rocks2">1</div>
+      <div class="layer rocks1">1</div>
+      <div class="layer hills">2</div>
+      <div class="layer foreground">3</div>
+      </div>
+  </div>
+  <div id="fadeout">フェードアウトさせる要素</div>
+ <script>
+  window.onscroll = function(){
+  function fadeOut(el, duration) {
+    var node = document.getElementById(el);
+    var start = performance.now();
+    requestAnimationFrame(function tick(timestamp) {
+      // イージング計算式（linear）
+      var easing = (timestamp - start) / duration;
+      // opacityが0か1から変数easingを引いた値をopacityに渡す
+      node.style.opacity = Math.max(1 - easing, 0);
+      // イージング計算式の値が1より小さいとき
+      if (easing < 1) {
+        requestAnimationFrame(tick);
+      }
+      else {
+        node.style.display = 'none';
+      }
+    });
+  }
+  var scrollTop = window.pageYOffset ;
+  if(scrollTop = 0) fadeOut('fadeout', 100);
+}
+
+ </script>
+</body>

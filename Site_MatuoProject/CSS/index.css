@@ -1,0 +1,279 @@
+@charset "UTF-8";
+
+/*----------------------------------------------------
+　TopBtn
+----------------------------------------------------*/
+#scrollTopBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: black;
+  color: #ffffff;
+  text-align: center;
+  line-height: 50px;
+  font-size: 14px;
+  cursor: pointer;
+  display: none; 
+  transition: opacity 0.3s;
+  font-family: 'Vollkorn', serif;
+}
+
+/*----------------------------------------------------
+　Home
+----------------------------------------------------*/
+#home {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+#home img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.overlay-text {
+  position: absolute; 
+  top: -60px;
+  left: 20%;
+  /* transform: translate(-50%, -50%); */
+  color: #ffffff;
+  font-size: 5rem;
+  text-align: center;
+  z-index: 1;
+}
+
+/*----------------------------------------------------
+　About us
+----------------------------------------------------*/
+#aboutus {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+#aboutus img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+#aboutus .overlay-text1 {
+  position: absolute; 
+  top: 60%;
+  left: 10%;
+  transform: translate(-50%);
+  color: #000000;
+  font-size: 1rem;
+  text-align: left;
+  line-height: 1.6;
+}
+/*----------------------------------------------------
+　width
+----------------------------------------------------*/
+#width {
+ /* y.t widthにpotition relativeを付与*/
+ position: relative;
+}
+
+/* y.t waveにpotition absoluteを付与*/
+.wave {
+  position:absolute;
+}
+/*----------------------------------------------------
+　Monthly
+----------------------------------------------------*/
+#monthly {
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* 基本レイアウト（画像と文字を横並び） */
+.box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px; /* 画像とテキストの間隔 */
+  margin-bottom: 40px;
+}
+
+/* y.t potition fixedだと画面上に固定されてしまうので一旦コメントアウト*/
+/*  
+.box .wave {
+  position:fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+  */
+
+/* 画像を左、文字を右に配置 */
+.box .box_img {
+  order: 1; /* 画像を左に */
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.box .box_body {
+  order: 2; /* 文字を右に */
+  width: 50%;
+  height: 100vh;
+}
+
+#leftText {
+  margin-top: 100px;
+  text-align: right;
+}
+
+.box-txt1 {
+  background-color: #ffffff;
+  margin-top: 100px;
+}
+
+/* reverse（画像を右、文字を左にする） */
+.box.reverse {
+  flex-direction: row-reverse;
+}
+
+.box .box_body #rightText {
+  margin-top: 100px;
+  text-align: left;
+}
+
+.box .box_body .box-txt {
+  margin-top: 100px;
+  text-align: left;
+  margin-left: 0;
+}
+
+/* 画像のスタイル */
+.box_img img {
+  max-width: 100%;
+  height: 400px;
+  border-radius: 10px;
+}
+
+/* スマホ用レスポンシブ対応 */
+/* @media (max-width: 768px) {
+  .box, .box.reverse {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .box .box_img, .box .box_body {
+    width: 100%;
+  }
+
+  .box_img {
+    margin-bottom: 20px;
+  }
+} */
+
+
+/*----------------------------------------------------
+　Access
+----------------------------------------------------*/
+#access {
+  width: 100%;
+  margin: 40px 0 20px 0;
+}
+
+#detailInfo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#address {
+  text-align: center;
+}
+
+#detailAddress {
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+#btn a {
+  margin-right: 40px;
+}
+
+#linkInsta {
+  text-decoration: none;
+  color: #000000;
+}
+
+#linkLine {
+  text-decoration: none;
+  color: #000000;
+}
+
+.svg-fragment {
+  border: 1px solid #000000;
+}
+
+.linkInsta{
+  display:inline-block;
+  padding:10px 25px;
+  position:relative;
+  color:#fff;
+  cursor:pointer
+}
+
+.linkInsta::before{
+  content:'';
+  position:absolute;
+  height:100%;
+  width:100%;
+  top:5px;
+  right:5px;
+  background-color:#f39c12;
+  z-index:-1;
+  transition:transform .2s ease-in-out
+}
+.linkInsta::after{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  height:100%;
+  width:100%;
+  border:1px solid #474e51
+}
+.linkInsta:hover::before{
+  transform:translate(6px,-4px)
+}
+        

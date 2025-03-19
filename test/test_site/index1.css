@@ -1,0 +1,19 @@
+@charset "UTF-8";
+div#stroke{
+  width:100%;
+  max-width:1920px;
+  height:100%;
+  position:relative;
+  margin:0 auto;
+  overflow:hidden;
+}
+
+svg#scroll-line{
+  width:100%;
+  height:100%;
+
+  position:absolute;
+  left:50%;
+  margin-left:-960px;
+}
+

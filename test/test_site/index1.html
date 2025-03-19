@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スクロールで線を描画</title>
+    <style>
+        body {
+            height: 600vh; /* スクロールのための高さ */
+            background: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        svg {
+            position: fixed;
+            top: 0px;
+            left: 0;
+            width: 100vw;
+            height: 100%;
+            pointer-events: none;
+            z-index: -10;
+        }
+    </style>
+</head>
+<body>
+    <!-- 1つ目の線の描画 -->
+    <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+        <!-- <path id="scroll-path" d="M-398.195 179.287C-193.892 42.2274 -62.5169 139.898 0.900121 266.488C78.3462 421.082 181.936 406.311 314.04 341.727L400.813 295.692C416.886 286.75 433.319 277.499 450.116 268.106" stroke="black" stroke-width="0.4" fill="none"/> -->
+        <path id="scroll-path" d="M 100,3 Q 15,10 50,25 T 0,30" stroke="black" stroke-width="0.4" fill="none"/>
+    <!-- 2つ目の線の描画 -->
+        <!-- <path id="scroll-path1" d="M520.019 299.759C707.108 130.076 934.964 39.3623 1207.41 150.555" stroke="#101010" style="stroke-dashoffset:0.001; stroke-dasharray: 0px, 999999px";></path> -->
+        <path id="scroll-path1" d="M 0,70 Q 80,20 50,60 T 100,70" stroke="#101010" stroke-width="0.4" fill="none"></path>
+    </svg>
+    <?xml version="1.0" encoding="utf-8"?>
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="300px" height="100px" viewBox="0 0 300 100" xml:space="preserve">
+        <g>
+            <text x="10" y="70" font-family="Arial" font-size="60" fill="black">I have</text>
+        </g>
+    </svg>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const path = document.getElementById("scroll-path");
+            const path1 = document.getElementById("scroll-path1");
+
+            const pathLength = path.getTotalLength();
+            const pathLength1 = path1.getTotalLength();
+
+            // 初期設定: 全ての線を隠す
+            path.style.strokeDasharray = pathLength;
+            path.style.strokeDashoffset = pathLength;
+            
+            path1.style.strokeDasharray = pathLength1;
+            path1.style.strokeDashoffset = pathLength1;
+
+            window.addEventListener("scroll", function () {
+                const scrollTop = window.scrollY;
+                const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollFraction = scrollTop / scrollHeight;
+
+                // 1つ目の線は常にスクロールに応じて描画
+                path.style.strokeDashoffset = pathLength * (1 - scrollFraction);
+
+                console.log(scrollTop);
+                // 2つ目の線はスクロールが400pxを超えたら描画開始
+                if (scrollTop > 1000) {
+                    const newScrollFraction = (scrollTop - 1000) / (scrollHeight - 1000);
+                    path1.style.strokeDashoffset = pathLength1 * (1 - newScrollFraction);
+                } else {
+                    // 400px未満のときは初期状態に戻す（線を非表示にする）
+                    path1.style.strokeDashoffset = pathLength1;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
